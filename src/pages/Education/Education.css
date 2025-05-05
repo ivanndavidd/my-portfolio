@@ -1,0 +1,256 @@
+.education-section {
+  padding-top: 5rem;
+  padding-bottom: 3rem;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-right: 1.5rem;
+  padding-left: 1.5rem;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  text-align: center;
+  position: relative;
+}
+
+.section-title::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(135deg, #4f46e5 0%, #10b981 100%);
+  border-radius: 2px;
+}
+
+.section-icon {
+  display: inline-block;
+  margin-right: 0.5rem;
+  vertical-align: middle;
+}
+
+/* Horizontal Timeline Styles */
+.horizontal-timeline-container {
+  position: relative;
+  width: 100%;
+  overflow-x: auto;
+  padding: 1rem 1rem;
+}
+
+.horizontal-timeline {
+  display: flex;
+  position: relative;
+  min-width: 100%;
+  padding: 1rem 2rem 1rem 2rem; /* Reduced top padding from 4rem to 2rem */
+  padding-right: 4rem;
+}
+
+.timeline-end-spacer {
+  min-width: 50px; /* Sesuaikan dengan kebutuhan */
+  flex-shrink: 0;
+}
+
+/* Removed timeline-line styles or set to display: none */
+.timeline-line {
+  display: none;
+}
+
+.timeline-item {
+  position: relative;
+  min-width: 550px;
+  max-width: 550px;
+  margin-right: 2rem;
+  flex-shrink: 0;
+}
+
+/* Removed timeline-marker styles or set to display: none */
+.timeline-marker {
+  display: none;
+}
+
+.timeline-card {
+  background-color: white;
+  border-radius: 1rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+  height: 100%;
+  /* Add color for text in dark mode */
+  color: #1f2937;
+}
+
+/* Add dark mode styles for timeline card */
+.dark-mode .timeline-card {
+  background-color: white; /* Keep white background in dark mode */
+  color: #1f2937; /* Keep dark text in dark mode */
+}
+
+.dark-mode .timeline-university p,
+.dark-mode .timeline-period,
+.dark-mode .timeline-details p {
+  color: #4b5563; /* Slightly lighter than the main text color for better contrast */
+}
+
+.timeline-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.timeline-degree {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #4f46e5;
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+.timeline-field {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  background-color: #10b981;
+  color: white;
+  border-radius: 1rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.timeline-divider {
+  height: 2px;
+  background: linear-gradient(to right, #4f46e5 0%, #10b981 100%);
+  margin: 1rem 0;
+}
+
+.timeline-university h4 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0 0 0.25rem 0;
+  color: inherit; /* Inherit color from parent */
+}
+
+.timeline-university p {
+  color: #6b7280;
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.timeline-period {
+  font-style: italic;
+  color: #6b7280;
+  margin: 0.5rem 0 1rem;
+  font-size: 0.9rem;
+}
+
+.timeline-details {
+  margin-bottom: 1rem;
+}
+
+.timeline-details p {
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+  color: inherit; /* Inherit color from parent */
+}
+
+.timeline-details strong {
+  color: inherit; /* Inherit color from parent */
+  font-weight: 600;
+}
+
+.timeline-courses h5 {
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  color: inherit; /* Inherit color from parent */
+}
+
+.timeline-courses h5 svg {
+  margin-right: 0.5rem;
+}
+
+/* Horizontal scrolling for courses */
+.courses-scroll {
+  display: flex;
+  overflow-x: auto;
+  padding-bottom: 0.5rem;
+  padding-right: 24px !important; /* Tambahkan !important untuk memastikan tidak di-override */
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  white-space: nowrap;
+  max-height: 2.5rem;
+}
+
+.courses-scroll::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+.course-badge:last-child {
+  margin-right: 24px !important; /* Tambahkan !important untuk memastikan tidak di-override */
+}
+
+.course-badge {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  background-color: rgba(79, 70, 229, 0.1);
+  color: #4f46e5;
+  border-radius: 1rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  margin-right: 0.5rem;
+  white-space: nowrap;
+}
+
+.course-badge:hover {
+  background-color: #4f46e5;
+  color: white;
+}
+
+/* Custom scrollbar for horizontal timeline */
+.horizontal-timeline-container::-webkit-scrollbar {
+  height: 8px;
+}
+
+.horizontal-timeline-container::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.horizontal-timeline-container::-webkit-scrollbar-thumb {
+  background: linear-gradient(to right, #4f46e5, #10b981);
+  border-radius: 10px;
+}
+
+.horizontal-timeline-container::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to right, #3c35b5, #0e9268);
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .timeline-item {
+    min-width: 500px;
+    max-width: 500px;
+  }
+}
+
+@media (max-width: 480px) {
+  .timeline-item {
+    min-width: 450px;
+    max-width: 450px;
+  }
+
+  .timeline-card {
+    padding: 1rem;
+  }
+
+  .timeline-degree {
+    font-size: 1.1rem;
+  }
+}

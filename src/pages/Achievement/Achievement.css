@@ -1,0 +1,103 @@
+.achievements-section {
+  padding-top: 7rem;
+}
+
+.achievements-container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.achievements-group {
+  margin-bottom: 3rem;
+}
+
+.group-title {
+  display: flex;
+  align-items: center;
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  color: var(--primary-color);
+}
+
+.group-icon {
+  margin-right: 0.75rem;
+}
+
+.achievements-grid,
+.certifications-grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(1, 1fr);
+}
+
+.achievement-card,
+.certification-card {
+  display: flex;
+  align-items: center;
+  background-color: var(--card-bg);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: var(--card-shadow);
+  transition: var(--transition);
+  border-left: 5px solid var(--card-color, var(--primary-color));
+}
+
+.achievement-card:hover,
+.certification-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.achievement-icon,
+.certification-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  background-color: var(--card-color, var(--primary-color));
+  color: white;
+  border-radius: 50%;
+  margin-right: 1.5rem;
+  font-size: 1.25rem;
+  flex-shrink: 0;
+}
+
+.achievement-content,
+.certification-content {
+  flex: 1;
+}
+
+.achievement-title,
+.certification-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.achievement-year,
+.certification-year {
+  font-size: 0.875rem;
+  color: var(--text-light);
+}
+
+.certification-issuer {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--primary-color);
+  margin-bottom: 0.25rem;
+}
+
+@media (min-width: 768px) {
+  .achievements-grid,
+  .certifications-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .certifications-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

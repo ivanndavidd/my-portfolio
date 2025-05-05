@@ -1,0 +1,32 @@
+.shiny-text {
+  position: relative;
+  color: inherit; /* Menggunakan warna dari parent */
+  background: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 0) 40%,
+    rgba(255, 255, 255, 0.8) 50%,
+    rgba(255, 255, 255, 0) 60%
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  /* color: transparent; Penting: membuat teks transparan agar gradient terlihat */
+  display: inline-block;
+  animation: shine 5s linear infinite;
+}
+
+@keyframes shine {
+  0% {
+    background-position: 200% center;
+  }
+  100% {
+    background-position: -200% center;
+  }
+}
+
+.shiny-text.disabled {
+  animation: none;
+  color: inherit; /* Kembalikan ke warna asli jika disabled */
+  -webkit-background-clip: initial;
+  background-clip: initial;
+}
