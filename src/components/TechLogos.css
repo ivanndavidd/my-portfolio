@@ -1,0 +1,169 @@
+.tech-logos-container {
+  margin-top: 3rem;
+  padding: 2rem;
+  border-radius: 1rem;
+  background-color: var(--card-bg);
+  box-shadow: var(--card-shadow);
+  backdrop-filter: blur(5px);
+}
+
+.tech-logos-title.shiny-text {
+  text-align: center;
+  font-size: 1.75rem;
+  font-weight: 600;
+  margin-bottom: 2rem;
+  color: transparent;
+  background: linear-gradient(
+    120deg,
+    var(--primary-color, #4f46e5) 40%,
+    #10b981 50%,
+    var(--primary-color, #4f46e5) 60%
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  display: block;
+  width: 100%;
+  animation: shine 5s linear infinite;
+  position: relative;
+}
+
+@keyframes shine {
+  0% {
+    background-position: 200% center;
+  }
+  100% {
+    background-position: -200% center;
+  }
+}
+
+.tech-logos-title::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background: var(--gradient-bg);
+  border-radius: 2px;
+}
+
+/* Horizontal scrolling container for categories */
+.tech-categories-scroll {
+  overflow-x: auto;
+  padding-bottom: 1rem;
+  margin-bottom: -1rem; /* Compensate for padding */
+}
+
+/* Row of categories */
+.tech-categories-row {
+  display: flex;
+  gap: 2rem;
+  padding: 0.5rem;
+  min-width: min-content;
+}
+
+/* Individual category card */
+.tech-category {
+  min-width: 300px;
+  max-width: 400px;
+  border: 2px solid rgba(79, 70, 229, 0.3);
+  border-radius: 12px;
+  padding: 1.5rem;
+  background-color: rgba(255, 255, 255, 0.05);
+  flex-shrink: 0;
+}
+
+.tech-category-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--primary-color);
+  color: var(--text-color);
+  display: inline-block;
+}
+
+.tech-logos-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+}
+
+/* Custom scrollbar */
+.tech-categories-scroll::-webkit-scrollbar {
+  height: 6px;
+}
+
+.tech-categories-scroll::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+.tech-categories-scroll::-webkit-scrollbar-thumb {
+  background: var(--primary-color);
+  border-radius: 10px;
+}
+
+.tech-logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: float-animation 3s ease-in-out infinite;
+  transition: transform 0.3s ease;
+  width: 80px;
+}
+
+.tech-logo:hover {
+  transform: translateY(-10px) scale(1.1);
+}
+
+.tech-logo-icon {
+  margin-bottom: 0.5rem;
+  color: var(--primary-color);
+}
+
+.tech-logo-name {
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-align: center;
+}
+
+@keyframes float-animation {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* Dark mode adjustments */
+.dark-mode .tech-category {
+  border-color: rgba(99, 102, 241, 0.3);
+  background-color: rgba(17, 24, 39, 0.2);
+}
+
+.dark-mode .tech-categories-scroll::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .tech-category {
+    min-width: 260px;
+  }
+
+  .tech-logo {
+    width: 70px;
+  }
+
+  .tech-logo-name {
+    font-size: 0.75rem;
+  }
+}

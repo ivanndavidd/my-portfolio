@@ -56,7 +56,6 @@
   padding: 1.5rem;
   box-shadow: var(--card-shadow);
   transition: var(--transition);
-  cursor: pointer;
 }
 
 .skill-card:hover {
@@ -74,14 +73,6 @@
 .skill-name {
   font-size: 1.1rem;
   font-weight: 600;
-}
-
-.skill-toggle {
-  transition: transform 0.3s ease;
-}
-
-.skill-toggle.active {
-  transform: rotate(180deg);
 }
 
 .skill-progress {
@@ -113,19 +104,6 @@
   font-weight: 600;
   min-width: 3rem;
   text-align: right;
-}
-
-.skill-description {
-  margin-top: 1rem;
-  padding-top: 1rem;
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
-  font-size: 0.875rem;
-  color: var(--text-light);
-  overflow: hidden;
-}
-
-.dark-mode .skill-description {
-  border-top-color: rgba(255, 255, 255, 0.1);
 }
 
 @media (min-width: 768px) {
