@@ -1,6 +1,7 @@
 .education-section {
   padding-top: 2rem; 
-  padding-bottom: 3rem;
+  padding-bottom: 3rem; 
+  position: relative;
 }
 
 .container {
@@ -64,8 +65,8 @@
 
 .timeline-item {
   position: relative;
-  min-width: 550px;
-  max-width: 550px;
+  min-width: 600px;
+  max-width: 600px;
   margin-right: 2rem;
   flex-shrink: 0;
 }
@@ -82,7 +83,6 @@
   padding: 1.5rem;
   transition: all 0.3s ease;
   height: 100%;
-  /* Add color for text in dark mode */
   color: #1f2937;
 }
 
@@ -185,10 +185,11 @@
   scrollbar-width: none; */
   white-space: nowrap;
   max-height: 2.5rem;
+  -webkit-overflow-scrolling: touch;
 }
 
 .courses-scroll::-webkit-scrollbar {
-  height: 6px; 
+  height: 8px; 
 }
 
 .courses-scroll::-webkit-scrollbar-track {
@@ -208,6 +209,7 @@
 .course-badge:last-child {
   margin-right: 24px !important; 
 }
+
 
 .course-badge {
   display: inline-block;
@@ -249,15 +251,8 @@
 /* Responsive styles */
 @media (max-width: 768px) {
   .timeline-item {
-    min-width: 500px;
-    max-width: 500px;
-  }
-}
-
-@media (max-width: 480px) {
-  .timeline-item {
-    min-width: 450px;
-    max-width: 450px;
+    min-width: 400px;
+    max-width: 400px;
   }
 
   .timeline-card {
@@ -266,5 +261,125 @@
 
   .timeline-degree {
     font-size: 1.1rem;
+    margin-bottom: 0.3rem;
   }
+
+  .timeline-field {
+    font-size: 0.7rem;
+    padding: 0.2rem 0.6rem;
+  }
+
+  .timeline-university h4 {
+    font-size: 1rem;
+  }
+
+  .timeline-university p,
+  .timeline-period,
+  .timeline-details p {
+    font-size: 0.85rem;
+  }
+
+  .timeline-courses h5 {
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .gradient-divider {
+    margin: 1rem 0;
+  }
+
+  .course-badge {
+    font-size: 0.7rem;
+    padding: 0.2rem 0.6rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .timeline-item {
+    min-width: 320px;
+    max-width: 320px;
+  }
+
+  .timeline-card {
+    padding: 0.8rem;
+  }
+
+  .timeline-degree {
+    font-size: 1rem;
+  }
+  .timeline-university h4 {
+    font-size: 0.9rem;
+  }
+
+  .timeline-university p,
+  .timeline-period,
+  .timeline-details p {
+    font-size: 0.8rem;
+  }
+
+  .timeline-divider {
+    margin: 0.7rem 0;
+  }
+  .courses-scroll {
+    max-height: 2.2rem;
+  }
+}
+
+@keyframes floatingHorizontal {
+  0% {
+    transform: translateX(0px);
+  }
+  50% {
+    transform: translateX(8px);
+  }
+  100% {
+    transform: translateX(0px);
+  }
+}
+
+.vercel-nav-button.left {
+  animation: floatingHorizontal 2s ease-in-out infinite;
+  animation-delay: 0.2s;
+}
+
+.vercel-nav-button.right {
+  animation: floatingHorizontal 2s ease-in-out infinite;
+  animation-direction: reverse;
+}
+
+.vercel-nav-button {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: var(--primary-color);
+  border: 1px solid #4f46e5;
+  box-shadow: 0 2px 8px #111827;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  z-index: 10;
+  color: #f3f4f6;
+  font-size: 14px;
+}
+
+/* .vercel-nav-button:hover {
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.12);
+  transform: translateX(-50%) translateY(-2px);
+} */
+
+.vercel-nav-button:active {
+  transform: translateX(-50%) translateY(0);
+}
+
+.dark-mode .vercel-nav-button {
+  background-color: var(--primary-color);
+  border-color: #4f46e5;
+  color: #f3f4f6;
+  box-shadow: 0 2px 8px #7872f8;
 }
