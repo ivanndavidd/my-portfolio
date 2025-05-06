@@ -1,6 +1,8 @@
+/* Sesuaikan padding-top untuk section achievements */
 .achievements-section {
-  padding-top: 7rem;
+  padding-top: 2rem; /* Kurangi padding karena sudah ada padding dari content-wrapper */
 }
+
 
 .achievements-container {
   max-width: 1000px;

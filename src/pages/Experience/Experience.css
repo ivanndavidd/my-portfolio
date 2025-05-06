@@ -1,5 +1,6 @@
+/* Sesuaikan padding-top untuk section experience */
 .experience-section {
-  padding-top: 7rem;
+  padding-top: 2rem; /* Kurangi padding karena sudah ada padding dari content-wrapper */
 }
 
 .experience-container {

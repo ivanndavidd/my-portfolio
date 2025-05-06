@@ -1,5 +1,5 @@
 .education-section {
-  padding-top: 5rem;
+  padding-top: 2rem; 
   padding-bottom: 3rem;
 }
 
@@ -180,19 +180,33 @@
   display: flex;
   overflow-x: auto;
   padding-bottom: 0.5rem;
-  padding-right: 24px !important; /* Tambahkan !important untuk memastikan tidak di-override */
-  -ms-overflow-style: none;
-  scrollbar-width: none;
+  padding-right: 24px !important;
+  /* -ms-overflow-style: none;
+  scrollbar-width: none; */
   white-space: nowrap;
   max-height: 2.5rem;
 }
 
 .courses-scroll::-webkit-scrollbar {
-  display: none; /* Chrome, Safari, Opera */
+  height: 6px; 
+}
+
+.courses-scroll::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.courses-scroll::-webkit-scrollbar-thumb {
+  background: linear-gradient(to right, #4f46e5, #38bdf8, #10b981); 
+  border-radius: 10px;
+}
+
+.courses-scroll::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to right, #3c35b5, #2a9ed5, #0e9268);
 }
 
 .course-badge:last-child {
-  margin-right: 24px !important; /* Tambahkan !important untuk memastikan tidak di-override */
+  margin-right: 24px !important; 
 }
 
 .course-badge {

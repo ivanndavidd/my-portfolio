@@ -4,19 +4,29 @@
   left: 0;
   width: 100%;
   z-index: 1000;
-  padding: 1rem 0;
+  padding: 0.5rem 0;
   background-color: rgba(255, 255, 255, 0.8);
   backdrop-filter: blur(10px);
   transition: all 0.3s ease;
+}
+
+/* Tambahkan variabel untuk tinggi navbar yang bisa digunakan di seluruh aplikasi */
+:root {
+  --navbar-height: 50px;
+  --navbar-height-scrolled: 33px;
+  --navbar-border-color: rgba(0, 0, 0, 0.1);
+  --navbar-border-color-dark: rgba(255, 255, 255, 0.1);
 }
 
 .dark-mode .navbar {
   background-color: rgba(31, 41, 55, 0.8);
 }
 
+/* Update tinggi navbar saat scrolled */
 .navbar.scrolled {
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  padding: 0.75rem 0;
+  padding: 0.45rem 0;
+  --navbar-height: var(--navbar-height-scrolled);
 }
 
 /* Update the navbar container to use the full width and add more padding */
@@ -28,6 +38,7 @@
   margin: 0 auto;
   padding: 0 3rem; /* Increase horizontal padding */
   width: 100%;
+  position: relative;
 }
 
 /* Push the logo more to the left */
@@ -35,15 +46,9 @@
   text-decoration: none;
   display: flex;
   align-items: center;
-  margin-right: auto; /* Push to the left edge */
-  padding-right: 2rem; /* Add more padding */
+  margin-right: auto; 
+  padding-right: 2rem;
 }
-
-/* .logo-text {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: var(--primary-color, #4f46e5);
-} */
 
 .navbar-menu {
   display: flex;
@@ -76,17 +81,13 @@
   color: var(--primary-color, #4f46e5);
 }
 
-.navbar-avatar {
-  margin-right: 0.5rem;
-}
-
 .navbar-link.active::after {
   content: "";
   position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 3px;
+  height: 2px;
   background: linear-gradient(120deg, var(--primary-color, #4f46e5) 30%, #10b981 50%, var(--primary-color, #4f46e5) 60%);
   border-radius: 3px;
   background-size: 200% 100%;
@@ -122,6 +123,8 @@
   animation: shine 3s linear infinite;
   font-size: 1.5rem;
   font-weight: 700;
+  padding: 0.5rem 0;
+  margin: 0 0.5rem;
 }
 
 @keyframes shine {
@@ -135,7 +138,7 @@
 
 /* Khusus untuk dark mode */
 .dark-mode.nav-text.shiny-text {
-  background: linear-gradient(120deg, var(--primary-color, #10b981) 40%, #4f46e5 50%, var(--primary-color, #10b981) 60%);
+  background: linear-gradient(120deg, var(--primary-color) 40%, var(--secondary-color) 50%, var(--primary-color) 60%);
   background-size: 200% 100%;
   -webkit-background-clip: text;
   background-clip: text;
@@ -157,7 +160,7 @@
   background: transparent;
   border: none;
   color: var(--text-color, #1f2937);
-  font-size: 1.25rem;
+  font-size: 1rem;
   cursor: pointer;
   margin-left: 1rem;
   display: flex;
@@ -183,25 +186,171 @@
   display: none;
 }
 
+/* Mobile menu toggle button */
+.mobile-menu-toggle {
+  background: transparent;
+  border: none;
+  color: var(--text-color, #1f2937);
+  font-size: 1.25rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+  z-index: 1001;
+}
+
+/* Overlay untuk menutup menu */
+.menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  z-index: 998;
+}
+
+/* PROFILE DI MENU*/
+.navbar-profile {
+  width: 100%;
+  padding: 1rem 0rem;
+  margin: 0;
+  border-bottom: 1px solid var(--navbar-border-color);
+}
+
+.profile-container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin-top: 0;
+}
+
+.profile-avatar-wrapper {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #4f46e5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 12px;
+  color: white;
+  font-weight: 600;
+  font-size: 0.8rem;
+  border: 2px solid #4f46e5;
+}
+
+.profile-avatar-text {
+  text-transform: capitalize;
+}
+
+.profile-name {
+  font-weight: 600;
+  font-size: 1rem;
+  margin-bottom: 4px;
+  color: rgb(75, 75, 75);
+}
+
+.profile-phone {
+  display: flex;
+  align-items: center;
+  font-size: 0.85rem;
+  color: var(--text-light);
+}
+
+.navbar-divider {
+  width: 100%;
+  height: 1px;
+  background-color: var(--navbar-border-color);
+  margin: 0 0 1rem 0;
+  list-style: none;
+}
+
+.dark-mode .navbar-divider {
+  background-color: var(--navbar-border-color-dark);
+}
+
+/* PROFILE DI MENU*/
+/* Tambahkan border khusus untuk mobile di dalam media query */
 @media (max-width: 768px) {
+  .navbar {
+    border-bottom: 1px solid var(--navbar-border-color);
+    box-shadow: 1rem 1px 2px rgba(0, 0, 0, 0.03);
+    padding: 1.5rem 0;
+  }
+
+  .dark-mode .navbar {
+    border-bottom: 1px solid var(--navbar-border-color-dark);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  }
+
+  .navbar.scrolled {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    padding: 1rem 0;
+    --navbar-height: var(--navbar-height-scrolled);
+  }
+
+  /* Pusatkan logo di mobile */
+  .mobile-logo {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Tampilkan teks logo di mobile */
+  .mobile-logo .logo-text {
+    display: block;
+    padding: 0.5rem 0;
+    margin: 0 0.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+  }
+
+  /* Posisikan tombol dark mode di kanan */
+  .mobile-icons {
+    position: absolute;
+    right: 1rem;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Posisikan hamburger menu di kiri */
+  .mobile-menu-toggle {
+    position: absolute;
+    left: 1rem;
+    margin: 0;
+    padding: 0.5rem;
+    font-weight: normal;
+    font-size: 1rem;
+  }
+
+  .mobile-menu-toggle svg,
+  .theme-toggle svg,
+  .menu-toggle svg {
+    font-weight: normal;
+    stroke-width: 1;
+  }
+
   .navbar-menu {
     position: fixed;
-    top: 0;
-    right: -100%;
-    width: 70%;
-    height: 100vh;
+    top: var(--navbar-height);
+    left: -100%; 
+    width: 60%;
+    height: 70vh;
     flex-direction: column;
-    background-color: var(--background-color, white);
-    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
-    padding: 5rem 2rem 2rem;
+    background-color: var(--card-bg, white);
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+    padding: 0.5rem 2rem 2rem;
     transition: all 0.4s ease-in-out;
     z-index: 999;
     transform: none;
-    left: auto;
   }
 
   .navbar-menu.active {
-    right: 0;
+    left: 0;
   }
 
   .navbar-item {
@@ -220,4 +369,9 @@
   .navbar-icons {
     margin-left: 0;
   }
+}
+
+/* Pastikan menu-toggle tidak memiliki font-weight bold */
+.menu-toggle {
+  font-weight: normal;
 }

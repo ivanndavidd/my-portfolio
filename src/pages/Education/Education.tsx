@@ -67,8 +67,6 @@ const Education = () => {
 
 						{educationData.map((edu, index) => (
 							<div key={index} className="timeline-item">
-								{/* Removed timeline-marker div */}
-
 								<div className="timeline-card">
 									<h3 className="timeline-degree">{edu.degree}</h3>
 									<span className="timeline-field">{edu.field}</span>
@@ -95,6 +93,7 @@ const Education = () => {
 										<h5>
 											<FaBook /> Relevant Coursework:
 										</h5>
+										<div className="gradient-divider"></div>
 										<div className="courses-scroll">
 											{edu.courses.map((course, idx) => (
 												<span key={idx} className="course-badge">

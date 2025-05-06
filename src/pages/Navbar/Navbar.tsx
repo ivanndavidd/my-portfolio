@@ -13,6 +13,7 @@ interface NavbarProps {
 const Navbar = ({ darkMode, toggleDarkMode }: NavbarProps) => {
 	const [isOpen, setIsOpen] = useState(false);
 	const [scrolled, setScrolled] = useState(false);
+	const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
 
 	const toggleMenu = () => {
 		setIsOpen(!isOpen);
@@ -27,9 +28,16 @@ const Navbar = ({ darkMode, toggleDarkMode }: NavbarProps) => {
 			}
 		};
 
+		const handleResize = () => {
+			setIsMobile(window.innerWidth <= 768);
+		};
+
 		window.addEventListener("scroll", handleScroll);
+		window.addEventListener("resize", handleResize);
+
 		return () => {
 			window.removeEventListener("scroll", handleScroll);
+			window.removeEventListener("resize", handleResize);
 		};
 	}, []);
 
@@ -45,17 +53,54 @@ const Navbar = ({ darkMode, toggleDarkMode }: NavbarProps) => {
 	return (
 		<nav className={`navbar ${scrolled ? "scrolled" : ""}`}>
 			<div className="navbar-container">
-				<NavLink to="/" className="navbar-logo">
-					<Avatar
-						src="/avatar.jpg"
-						alt="David"
-						size={36}
-						className="navbar-avatar"
-					/>
+				{/* Mobile Menu Button - Hanya tampil di mobile */}
+				{isMobile && (
+					<button
+						className="mobile-menu-toggle"
+						onClick={toggleMenu}
+						aria-label="Toggle menu"
+					>
+						{isOpen ? <FaTimes /> : <FaBars />}
+					</button>
+				)}
+
+				<NavLink
+					to="/"
+					className={`navbar-logo ${isMobile ? "mobile-logo" : ""}`}
+				>
+					{!isMobile && (
+						<Avatar
+							src="/avatar.jpg"
+							alt="David"
+							size={50}
+							className="navbar-avatar"
+						/>
+					)}
 					<span className="logo-text shiny-text">David's Portfolio</span>
 				</NavLink>
 
 				<ul className={`navbar-menu ${isOpen ? "active" : ""}`}>
+					{isMobile && (
+						<li className="navbar-profile">
+							<div className="profile-container">
+								<Avatar
+									src="/avatar.jpg"
+									alt="Ivan David"
+									size={50}
+									className="profile-avatar-wrapper"
+								/>
+								<div className="profile-info">
+									<div className="profile-avatar-text">Ivan David</div>
+									<div className="profile-phone">
+										<span>+6281286287585</span>
+									</div>
+								</div>
+							</div>
+						</li>
+					)}
+
+					{/* Divider after profile section */}
+					{isMobile && <li className="navbar-divider"></li>}
 					{navLinks.map((link, index) => (
 						<li key={index} className="navbar-item">
 							<NavLink
@@ -64,6 +109,7 @@ const Navbar = ({ darkMode, toggleDarkMode }: NavbarProps) => {
 									`navbar-link ${isActive ? "active" : ""}`
 								}
 								end={link.path === "/"}
+								onClick={() => isMobile && setIsOpen(false)}
 							>
 								{({ isActive }) => (
 									<span className={`nav-text ${isActive ? "shiny-text" : ""}`}>
@@ -75,7 +121,7 @@ const Navbar = ({ darkMode, toggleDarkMode }: NavbarProps) => {
 					))}
 				</ul>
 
-				<div className="navbar-icons">
+				<div className={`navbar-icons ${isMobile ? "mobile-icons" : ""}`}>
 					<button
 						className="theme-toggle"
 						onClick={toggleDarkMode}
@@ -83,14 +129,21 @@ const Navbar = ({ darkMode, toggleDarkMode }: NavbarProps) => {
 					>
 						{darkMode ? <FaSun /> : <FaMoon />}
 					</button>
-					<button
-						className="menu-toggle"
-						onClick={toggleMenu}
-						aria-label="Toggle menu"
-					>
-						{isOpen ? <FaTimes /> : <FaBars />}
-					</button>
+					{!isMobile && (
+						<button
+							className="menu-toggle"
+							onClick={toggleMenu}
+							aria-label="Toggle menu"
+						>
+							{isOpen ? <FaTimes /> : <FaBars />}
+						</button>
+					)}
 				</div>
+
+				{/* Overlay para cerrar menú al hacer clic fuera - solo en móvil */}
+				{isMobile && isOpen && (
+					<div className="menu-overlay" onClick={toggleMenu}></div>
+				)}
 			</div>
 		</nav>
 	);
