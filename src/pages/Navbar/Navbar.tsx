@@ -167,11 +167,6 @@ const Navbar = ({ darkMode, toggleDarkMode }: NavbarProps) => {
 						</button>
 					)}
 				</div>
-
-				{/* We can remove this overlay since we're using the useEffect click handler */}
-				{/* {isMobile && isOpen && (
-					<div className="menu-overlay" onClick={toggleMenu}></div>
-				)} */}
 			</div>
 		</nav>
 	);
