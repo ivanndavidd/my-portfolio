@@ -257,11 +257,10 @@ const Education = () => {
 						</div>
 					</div>
 
-					{/* Tombol navigasi gaya Vercel */}
 					<div className="vercel-nav-buttons">
 						<button
 							className="vercel-nav-button left"
-							onClick={scrollLeft}
+							onClick={isMobile ? scrollToEnd : scrollLeft}
 							aria-label="Scroll left"
 							style={{ visibility: scrollPosition <= 0 ? "hidden" : "visible" }}
 						>
@@ -273,16 +272,15 @@ const Education = () => {
 								onClick={() =>
 									timelineRef.current?.scrollTo({ left: 0, behavior: "smooth" })
 								}
-								aria-label="Scroll to beginning"
+								aria-label="Scroll to Left"
 							>
 								<FaChevronLeft />
 							</button>
 						) : (
 							<button
 								className="vercel-nav-button right"
-								// onClick={scrollRight}
 								onClick={isMobile ? scrollToEnd : scrollRight}
-								aria-label="Scroll right"
+								aria-label="Scroll Right"
 								style={{
 									visibility:
 										scrollPosition >= maxScroll ? "hidden" : "visible",

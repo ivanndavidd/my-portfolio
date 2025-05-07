@@ -350,7 +350,6 @@
 .vercel-nav-button {
   position: absolute;
   bottom: 20px;
-  left: 50%;
   transform: translateX(-50%);
   width: 40px;
   height: 40px;
@@ -368,11 +367,6 @@
   font-size: 14px;
 }
 
-/* .vercel-nav-button:hover {
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.12);
-  transform: translateX(-50%) translateY(-2px);
-} */
-
 .vercel-nav-button:active {
   transform: translateX(-50%) translateY(0);
 }
@@ -382,4 +376,13 @@
   border-color: #4f46e5;
   color: #f3f4f6;
   box-shadow: 0 2px 8px #7872f8;
+}
+
+.vercel-nav-buttons {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 60px;
+  margin-top: 10px;
 }
