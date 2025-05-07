@@ -149,7 +149,6 @@ const Navbar = ({ darkMode, toggleDarkMode }: NavbarProps) => {
 						</li>
 					))}
 				</ul>
-
 				<div className={`navbar-icons ${isMobile ? "mobile-icons" : ""}`}>
 					<button
 						className="theme-toggle"
