@@ -1,5 +1,5 @@
 import "./Navbar.css";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { NavLink } from "react-router-dom";
 import { FaSun, FaMoon, FaBars, FaTimes } from "react-icons/fa";
 import Avatar from "../../components/Avatar";
@@ -14,10 +14,38 @@ const Navbar = ({ darkMode, toggleDarkMode }: NavbarProps) => {
 	const [isOpen, setIsOpen] = useState(false);
 	const [scrolled, setScrolled] = useState(false);
 	const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+	const menuRef = useRef<HTMLUListElement>(null);
+	const toggleButtonRef = useRef<HTMLButtonElement>(null);
 
 	const toggleMenu = () => {
 		setIsOpen(!isOpen);
 	};
+
+	// Handle clicks outside the navbar
+	useEffect(() => {
+		const handleClickOutside = (event: MouseEvent) => {
+			// Only run this in mobile mode when menu is open
+			if (!isMobile || !isOpen) return;
+
+			// Check if click is outside both the menu and the toggle button
+			if (
+				menuRef.current &&
+				!menuRef.current.contains(event.target as Node) &&
+				toggleButtonRef.current &&
+				!toggleButtonRef.current.contains(event.target as Node)
+			) {
+				setIsOpen(false);
+			}
+		};
+
+		// Add event listener
+		document.addEventListener("mousedown", handleClickOutside);
+
+		// Clean up
+		return () => {
+			document.removeEventListener("mousedown", handleClickOutside);
+		};
+	}, [isOpen, isMobile]);
 
 	useEffect(() => {
 		const handleScroll = () => {
@@ -59,6 +87,7 @@ const Navbar = ({ darkMode, toggleDarkMode }: NavbarProps) => {
 						className="mobile-menu-toggle"
 						onClick={toggleMenu}
 						aria-label="Toggle menu"
+						ref={toggleButtonRef}
 					>
 						{isOpen ? <FaTimes /> : <FaBars />}
 					</button>
@@ -79,7 +108,7 @@ const Navbar = ({ darkMode, toggleDarkMode }: NavbarProps) => {
 					<span className="logo-text shiny-text">David's Portfolio</span>
 				</NavLink>
 
-				<ul className={`navbar-menu ${isOpen ? "active" : ""}`}>
+				<ul className={`navbar-menu ${isOpen ? "active" : ""}`} ref={menuRef}>
 					{isMobile && (
 						<li className="navbar-profile">
 							<div className="profile-container">
@@ -140,10 +169,10 @@ const Navbar = ({ darkMode, toggleDarkMode }: NavbarProps) => {
 					)}
 				</div>
 
-				{/* Overlay para cerrar menú al hacer clic fuera - solo en móvil */}
-				{isMobile && isOpen && (
+				{/* We can remove this overlay since we're using the useEffect click handler */}
+				{/* {isMobile && isOpen && (
 					<div className="menu-overlay" onClick={toggleMenu}></div>
-				)}
+				)} */}
 			</div>
 		</nav>
 	);
